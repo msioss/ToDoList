@@ -1,6 +1,6 @@
 ﻿namespace ToDoList.Data.Entities
 {
-    public class TasksBlock
+    public class TaskBlock
     {
         public int Id { get; set; }
         public string Name { get; set; }

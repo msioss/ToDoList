@@ -4,9 +4,9 @@ using ToDoList.Data.Entities;
 
 namespace ToDoList.Data.Configurations
 {
-    public class TasksBlockConfiguration : IEntityTypeConfiguration<TasksBlock>
+    public class TaskBlockConfiguration : IEntityTypeConfiguration<TaskBlock>
     {
-        public void Configure(EntityTypeBuilder<TasksBlock> builder)
+        public void Configure(EntityTypeBuilder<TaskBlock> builder)
         {
             builder.Property(p => p.Name)
                 .HasMaxLength(50)
