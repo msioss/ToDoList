@@ -10,16 +10,16 @@ namespace ToDoList.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TasksBlocks",
+                name: "TaskBlocks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TasksBlocks", x => x.Id);
+                    table.PrimaryKey("PK_TaskBlocks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,23 +30,23 @@ namespace ToDoList.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Status = table.Column<bool>(type: "boolean", nullable: false),
-                    TasksBlockId = table.Column<int>(type: "integer", nullable: false)
+                    TaskBlockId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_TasksBlocks_TasksBlockId",
-                        column: x => x.TasksBlockId,
-                        principalTable: "TasksBlocks",
+                        name: "FK_Tasks_TaskBlocks_TaskBlockId",
+                        column: x => x.TaskBlockId,
+                        principalTable: "TaskBlocks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_TasksBlockId",
+                name: "IX_Tasks_TaskBlockId",
                 table: "Tasks",
-                column: "TasksBlockId");
+                column: "TaskBlockId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -55,7 +55,7 @@ namespace ToDoList.Migrations
                 name: "Tasks");
 
             migrationBuilder.DropTable(
-                name: "TasksBlocks");
+                name: "TaskBlocks");
         }
     }
 }

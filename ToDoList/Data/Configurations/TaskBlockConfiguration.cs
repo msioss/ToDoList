@@ -13,7 +13,7 @@ namespace ToDoList.Data.Configurations
                 .IsRequired();
 
             builder.HasMany(e => e.Tasks)
-                .WithOne(e => e.TasksBlock);
+                .WithOne(e => e.TaskBlocks);
         }
 
     }

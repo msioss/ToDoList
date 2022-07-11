@@ -12,14 +12,14 @@ namespace ToDoList.Data.EFContext
         }
 
         public virtual DbSet<ToDoTask> Tasks { get; set; }
-        public virtual DbSet<TaskBlock> TasksBlocks { get; set; }
+        public virtual DbSet<TaskBlock> TaskBlocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new ToDoTaskConfiguration());
-            modelBuilder.ApplyConfiguration(new ToDoTaskConfiguration());
+            modelBuilder.ApplyConfiguration(new TaskBlockConfiguration());
         }
     }
 }

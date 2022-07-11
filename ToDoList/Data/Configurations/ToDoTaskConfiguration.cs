@@ -12,9 +12,9 @@ namespace ToDoList.Data.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.HasOne(e => e.TasksBlock)
+            builder.HasOne(e => e.TaskBlocks)
                 .WithMany(e => e.Tasks)
-                .HasForeignKey(e => e.TasksBlockId)
+                .HasForeignKey(e => e.TaskBlockId)
                 .IsRequired();
         }
     }

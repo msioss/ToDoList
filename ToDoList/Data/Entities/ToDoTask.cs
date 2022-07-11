@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public bool Status { get; set; }
 
-        public int TasksBlockId { get; set; }
-        public virtual TasksBlock TasksBlock { get; set; }
+        public int TaskBlockId { get; set; }
+        public virtual TaskBlock TaskBlocks { get; set; }
     }
 }

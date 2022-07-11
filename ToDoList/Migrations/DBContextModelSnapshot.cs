@@ -21,7 +21,7 @@ namespace ToDoList.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ToDoList.Data.Entities.TasksBlock", b =>
+            modelBuilder.Entity("ToDoList.Data.Entities.TaskBlock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,11 +31,12 @@ namespace ToDoList.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TasksBlocks");
+                    b.ToTable("TaskBlocks");
                 });
 
             modelBuilder.Entity("ToDoList.Data.Entities.ToDoTask", b =>
@@ -54,28 +55,28 @@ namespace ToDoList.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("TasksBlockId")
+                    b.Property<int>("TaskBlockId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TasksBlockId");
+                    b.HasIndex("TaskBlockId");
 
                     b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("ToDoList.Data.Entities.ToDoTask", b =>
                 {
-                    b.HasOne("ToDoList.Data.Entities.TasksBlock", "TasksBlock")
+                    b.HasOne("ToDoList.Data.Entities.TaskBlock", "TaskBlocks")
                         .WithMany("Tasks")
-                        .HasForeignKey("TasksBlockId")
+                        .HasForeignKey("TaskBlockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TasksBlock");
+                    b.Navigation("TaskBlocks");
                 });
 
-            modelBuilder.Entity("ToDoList.Data.Entities.TasksBlock", b =>
+            modelBuilder.Entity("ToDoList.Data.Entities.TaskBlock", b =>
                 {
                     b.Navigation("Tasks");
                 });
