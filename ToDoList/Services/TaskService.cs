@@ -31,7 +31,7 @@ namespace ToDoList.Services
             {
                 Name = model.Name,
                 Status = false,
-                TaskBlockId=model.TasksBlockId
+                TaskBlockId=model.TaskBlockId
             };
 
             var result = await context.Tasks.AddAsync(task);
